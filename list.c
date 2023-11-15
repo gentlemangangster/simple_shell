@@ -75,7 +75,7 @@ list_t *add_end_node(list_t **hd, const char *strng, int num)
 }
 
 /**
- * print_strng_list - function that prints only the
+ * strng_list_print - function that prints only the
  * strng element of a list_t linked list.
  * @y: A pointer to the first nodes
  *
