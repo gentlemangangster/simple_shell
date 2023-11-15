@@ -41,7 +41,7 @@ int _strngcmp(char *m1, char *m2)
 }
 
 /**
- * strts_with - function that checks if needle starts with haystack
+ * begin_with - function that checks if needle starts with haystack
  * @haystck: argument string to search
  * @nidle: argument substring to find
  *
