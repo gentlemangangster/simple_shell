@@ -7,7 +7,7 @@
  * Return: exits with a given exit status
  * (0) if info.argv[0] != "exit"
  */
-int shelexit(info_t *dl_info)
+int _shelexit(info_t *dl_info)
 {
 	int shexitcheck;
 
@@ -31,7 +31,7 @@ int shelexit(info_t *dl_info)
 
 /**
  * _tmcd - changes the current directory of the process
- * @info: Structure containing potential arguments. Used to maintain
+ * @dl_info: Structure containing potential arguments. Used to maintain
  * constant function prototype.
  * Return: Always 0
  */
@@ -92,6 +92,6 @@ int _tmhlp(info_t *dl_info)
 	array_arg = dl_info->argv;
 	_puts("help call works. Function not yet added \n");
 	if (0)
-		_puts(*array_arg); 
+		_puts(*array_arg);
 	return (0);
 }
