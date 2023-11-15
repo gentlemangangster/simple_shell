@@ -113,7 +113,7 @@ ssize_t read_buff(info_t *dl_info, char *buff, size_t *x)
  * _get_line - gets the next line of input from STDIN
  * @dl_info: parameter struct
  * @pttr: address of pointer to buffer, preallocated or NULL
- * @length: size of preallocated ptr buffer if not NULL
+ * @lenth: size of preallocated ptr buffer if not NULL
  *
  * Return: m
  */
@@ -162,7 +162,7 @@ int _get_line(info_t *dl_info, char **pttr, size_t *lenth)
  *
  * Return: void
  */
-void signintHandler(__attribute__((unused))int sig_num)
+void signintHandler(__attribute__((unused))int sign_num)
 {
 	_puts("\n");
 	_puts("$ ");
