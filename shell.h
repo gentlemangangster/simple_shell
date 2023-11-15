@@ -207,7 +207,7 @@ int _setenv(info_t *, char *, char *);
 char *history_get_file(info_t *dl_info);
 int wrt_history(info_t *dl_info);
 int rd_history(info_t *dl_info);
-int build_lis_history(info_t *dl_info, char *buff, int linecount);
+int build_list_history(info_t *dl_info, char *buff, int linecount);
 int renumber_history(info_t *dl_info);
 
 /* toem_lists.c */
