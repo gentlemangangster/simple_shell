@@ -12,7 +12,7 @@ int interactive(info_t *dt_info)
 }
 
 /**
- * is_delim - checks if character is a delimeter
+ * is_delimt - checks if character is a delimeter
  * @d: the char to check
  * @de_limt: the delimeter string
  * Return: 1 if true, 0 if false
