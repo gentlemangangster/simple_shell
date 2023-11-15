@@ -8,7 +8,7 @@
  */
 int _tmenv(info_t *dl_info)
 {
-	print_list_str(dl_info->env);
+	strng_list_print(dl_info->env);
 	return (0);
 }
 
@@ -26,7 +26,7 @@ char *_getenv(info_t *dl_info, const char *gnm)
 
 	while (node)
 	{
-		k = starts_with(node->str, gnm);
+		k = begin_with(nodes->strng, gnm);
 		if (k && *k)
 			return (k);
 		nodes = nodes->next;
@@ -45,7 +45,7 @@ int _tmsetenv(dl_info_t *dl_info)
 {
 	if (dl_info->argc != 3)
 	{
-		_eputs("Incorrect number of arguements\n");
+		_eputstrg("Incorrect number of arguements\n");
 		return (1);
 	}
 	if (_setenv(dl_info, dl_info->argv[1], dl_info->argv[2]))
@@ -61,15 +61,15 @@ int _tmsetenv(dl_info_t *dl_info)
  */
 int _tmunsetenv(info_t *dl_info)
 {
-	int i;
+	int x;
 
 	if (dl_info->argc == 1)
 	{
-		_eputs("Not upto expected arguements.\n");
+		_eputstrg("Not upto expected arguements.\n");
 		return (1);
 	}
-	for (i = 1; i <= dl_info->argc; i++)
-		_unsetenv(dl_info, dl_info->argv[i]);
+	for (x = 1; x <= dl_info->argc; x++)
+		_unsetenv(dl_info, dl_info->argv[x]);
 
 	return (0);
 }
@@ -83,10 +83,10 @@ int _tmunsetenv(info_t *dl_info)
 int addto_env_list(info_t *dl_info)
 {
 	list_t *nodes = NULL;
-	size_t i;
+	size_t x;
 
-	for (i = 0; environ[i]; i++)
-		add_node_end(&nodes, environ[i], 0);
+	for (x = 0; environ[x]; x++)
+		add_end_node(&nodes, environ[x], 0);
 	dl_info->env = nodes;
 	return (0);
 }
