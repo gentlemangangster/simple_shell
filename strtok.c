@@ -51,7 +51,7 @@ char **strngtow(char *strng, char *d)
 
 /**
  * **strngtow2 - func to splits a string into words
- * @str: the argument input string
+ * @strng: the argument input string
  * @d: the argument delimeter
  * Return: a pointer to an array of strings, or NULL on failure
  */
