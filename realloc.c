@@ -5,7 +5,7 @@
  *@a: the pointer to the memory area
  *@d: the byte to fill *s with
  *@nmb: the amount of bytes to be filled
- *Return: value (a), a pointer to the memory area 
+ *Return: value (a), a pointer to the memory area
  */
 char *_memoryset(char *a, char d, unsigned int nmb)
 {
@@ -33,9 +33,9 @@ void ffree(char **sst)
 
 /**
  * _realloc - reallocates a block of memory
- * @ptr: pointer to previous malloc'ated block
- * @old_size: byte size of previous block
- * @new_size: byte size of new block
+ * @pttr: pointer to previous malloc'ated block
+ * @old_sz: byte size of previous block
+ * @new_sz: byte size of new block
  *
  * Return: pointer to da ol'block nameen.
  */
