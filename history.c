@@ -104,13 +104,13 @@ int rd_history(info_t *dl_info)
 
 /**
  * build_history_list - adds entry to a history linked list
- * @info: Structure containing potential arguments. Used to maintain
- * @buf: buffer
- * @linecount: the history linecount, histcount
+ * @dl_info: Structure containing potential arguments. Used to maintain
+ * @buff: buffer
+ * @lncount: the history linecount, histcount
  *
  * Return: Always 0
  */
-int build_list_history(info_t *dl_info, char *buff, int lncount)
+int build_history_list(info_t *dl_info, char *buff, int lncount)
 {
 	list_t *nodes = NULL;
 
