@@ -14,8 +14,8 @@ int _tmenv(info_t *dl_info)
 
 /**
  * _getenv - gets the value of an environ variable
- * @info: Structure containing potential arguments. Used to maintain
- * @name: env var name
+ * @dl_info: Structure containing potential arguments. Used to maintain
+ * @gnm: env var name
  *
  * Return: the value
  */
