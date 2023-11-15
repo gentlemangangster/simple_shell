@@ -6,7 +6,7 @@
  */
 void discard_info(info_t *dl_info)
 {
-  dl_info->arg = NULL;
+	dl_info->arg = NULL;
 	dl_info->argv = NULL;
 	dl_info->path = NULL;
 	dl_info->argc = 0;
@@ -14,7 +14,7 @@ void discard_info(info_t *dl_info)
 
 /**
  * ini_info - To initializes info_t struct
- * @info: struct address
+ * @dl_info: struct address
  * @avec: argument vector
  */
 void ini_info(info_t *dl_info, char **avec)
@@ -57,7 +57,7 @@ void free_dlinfo(info_t *dl_info, int all)
 	if (all)
 	{
 		if (!dl_info->cmd_buf)
-      free(dl_info->arg);
+      			free(dl_info->arg);
 		if (dl_info->env)
 			free_list(&(dl_info->env));
 		if (dl_info->history)
