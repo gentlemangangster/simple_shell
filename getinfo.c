@@ -39,8 +39,8 @@ void ini_info(info_t *dl_info, char **avec)
 			;
 		dl_info->argc = x;
 
-		replace_alias(dl_info);
-		replace_vars(dl_info);
+		re_place_alias(dl_info);
+		re_place_vars(dl_info);
 	}
 }
 
