@@ -214,7 +214,7 @@ int renumber_history(info_t *dl_info);
 list_t *new_node(list_t **, const char *, int);
 list_t *add_end_node(list_t **, const char *, int);
 size_t strng_list_print(const list_t *);
-int delete_node(list_t **, unsigned int);
+int delete_nodes(list_t **, unsigned int);
 void free_lst(list_t **);
 
 /* toem_lists1.c */
