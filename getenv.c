@@ -19,10 +19,10 @@ char **gt_enviromt(info_t *dl_info)
 
 /**
  * _unsetenv - Remove an environment variable
- * @info: Structure containing potential arguments. Used to maintain
+ * @dl_info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
  *  Return: 1 on delete, 0 otherwise
- * @var: the string env var property
+ * @varb: the string env var property
  */
 int _unsetenv(info_t *dl_info, char *varb)
 {
