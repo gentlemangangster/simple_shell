@@ -57,7 +57,7 @@ void free_dlinfo(info_t *dl_info, int all)
 	if (all)
 	{
 		if (!dl_info->cmd_buf)
-      			free(dl_info->arg);
+			free(dl_info->arg);
 		if (dl_info->env)
 			free_list(&(dl_info->env));
 		if (dl_info->history)
