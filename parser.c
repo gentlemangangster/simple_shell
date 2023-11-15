@@ -24,7 +24,7 @@ int dtm_if_cmd(info_t *dl_info, char *paths)
 
 /**
  * dups_char - to duplicates functions characters
- * @pathstr: the PATH of the string
+ * @pathstrng: the PATH of the string
  * @strt: starting index
  * @stop: stopping index
  *
