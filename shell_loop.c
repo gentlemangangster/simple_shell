@@ -52,7 +52,7 @@ int tmsh(info_t *dl_info, char **avct)
  *			1 if btin found but not successful,
  *			-2 if btin signals exit()
  */
-int builtin_fnd(info_t *dl_info)
+int btin_fnd(info_t *dl_info)
 {
 	int x, btin_ret = -1;
 	builtin_table builtintbl[] = {
