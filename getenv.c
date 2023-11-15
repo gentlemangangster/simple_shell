@@ -35,10 +35,10 @@ int _unsetenv(info_t *dl_info, char *varb)
 
 	while (nodes)
 	{
-		pttr = starts_with(nodes->strng, varb);
+		pttr = begin_with(nodes->strng, varb);
 		if (pttr && *pttr == '=')
 		{
-			dl_info->env_changed = delete_node_at_index(&(dl_info->env), x);
+			dl_info->env_changed = delete_node(&(dl_info->env), x);
 			x = 0;
 			nodes = dl_info->env;
 			continue;
@@ -67,7 +67,7 @@ int _setenvmt(info_t *dl_info, char *varb, char *value)
 	if (!varb || !value)
 		return (0);
 
-	buff = malloc(_strlen(varb) + _strlen(value) + 2);
+	buff = malloc(_strlent(varb) + _strlent(value) + 2);
 	if (!buff)
 		return (1);
 	_strngcpy(buff, varb);
@@ -76,7 +76,7 @@ int _setenvmt(info_t *dl_info, char *varb, char *value)
 	nodes = dl_info->env;
 	while (nodes)
 	{
-		pttr = starts_with(nodes->strng, varb);
+		pttr = begin_with(nodes->strng, varb);
 		if (pttr && *pttr == '=')
 		{
 			free(nodes->strng);
@@ -86,7 +86,7 @@ int _setenvmt(info_t *dl_info, char *varb, char *value)
 		}
 		nodes = nodes->next;
 	}
-	add_node_end(&(dl_info->env), buff, 0);
+	add_end_node(&(dl_info->env), buff, 0);
 	free(buff);
 	dl_info->env_changed = 1;
 	return (0);
