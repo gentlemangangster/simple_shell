@@ -17,8 +17,8 @@ int _shelexit(info_t *dl_info)
 		if (shexitcheck == -1)
 		{
 			dl_info->status = 2;
-			print_error(dl_info, "Illegal number: ");
-			_eputs(dl_info->argv[1]);
+			generate_error(dl_info, "Illegal number: ");
+			_eputstrg(dl_info->argv[1]);
 			_eputchar('\n');
 			return (1);
 		}
@@ -42,7 +42,7 @@ int _tmcd(info_t *dl_info)
 
 	s = getcwd(buf_fer, 1024);
 	if (!d)
-		_puts("TODO: >>getcwd failure emsg here<<\n");
+		_putts("TODO: >>getcwd failure emsg here<<\n");
 	if (!dl_info->argv[1])
 	{
 		dirt = _getenv(dl_info, "HOME=");
@@ -52,15 +52,15 @@ int _tmcd(info_t *dl_info)
 		else
 			chdirt_ret = chdir(dir);
 	}
-	else if (_strcmp(dl_info->argv[1], "-") == 0)
+	else if (_strngcmp(dl_info->argv[1], "-") == 0)
 	{
 		if (!_getenv(dl_info, "OLDPWD="))
 		{
-			_puts(d);
+			_putts(d);
 			_putchar('\n');
 			return (1);
 		}
-		_puts(_getenv(dl_info, "OLDPWD=")), _putchar('\n');
+		_putts(_getenv(dl_info, "OLDPWD=")), _putchar('\n');
 		chdir_rt = /* TODO: what should this be? */
 			chdir((dir = _getenv(dl_info, "OLDPWD=")) ? dirt : "/");
 	}
@@ -69,7 +69,7 @@ int _tmcd(info_t *dl_info)
 	if (chdir_rt == -1)
 	{
 		print_error(dl_info, "can't cd to ");
-		_eputs(dl_info->argv[1]), _eputchar('\n');
+		_eputstrg(dl_info->argv[1]), _eputchar('\n');
 	}
 	else
 	{
@@ -90,8 +90,8 @@ int _tmhlp(info_t *dl_info)
 	char **array_arg;
 
 	array_arg = dl_info->argv;
-	_puts("help call works. Function not yet added \n");
+	_putts("help call works. Function not yet added \n");
 	if (0)
-		_puts(*array_arg);
+		_putts(*array_arg);
 	return (0);
 }
