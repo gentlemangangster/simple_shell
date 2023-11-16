@@ -19,7 +19,7 @@ int _shelexit(info_t *dl_info)
 			dl_info->status = 2;
 			generate_error(dl_info, "Illegal number: ");
 			_eputstrg(dl_info->argv[1]);
-			_eputchar('\n');
+			_eputstrgchar('\n');
 			return (1);
 		}
 		dl_info->err_num = _erratoi(dl_info->argv[1]);
@@ -57,10 +57,10 @@ int _tmcd(info_t *dl_info)
 		if (!_getenv(dl_info, "OLDPWD="))
 		{
 			_putts(d);
-			_putchar('\n');
+			_sendchar('\n');
 			return (1);
 		}
-		_putts(_getenv(dl_info, "OLDPWD=")), _putchar('\n');
+		_putts(_getenv(dl_info, "OLDPWD=")), _sendchar('\n');
 		chdir_rt = /* TODO: what should this be? */
 			chdir((dir = _getenv(dl_info, "OLDPWD=")) ? dirt : "/");
 	}
@@ -68,8 +68,8 @@ int _tmcd(info_t *dl_info)
 		chdir_rt = chdir(dl_info->argv[1]);
 	if (chdir_rt == -1)
 	{
-		print_error(dl_info, "can't cd to ");
-		_eputstrg(dl_info->argv[1]), _eputchar('\n');
+		generate_error(dl_info, "can't cd to ");
+		_eputstrg(dl_info->argv[1]), _eputstrgchar('\n');
 	}
 	else
 	{
