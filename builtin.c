@@ -50,7 +50,7 @@ int _tmcd(info_t *dl_info)
 			chdirt_rt = /* TODO: what should this be? */
 				chdir((dirt = _getenv(dl_info, "PWD=")) ? dirt : "/");
 		else
-			chdirt_ret = chdir(dir);
+			chdirt_ret = chdir(dirt);
 	}
 	else if (_strngcmp(dl_info->argv[1], "-") == 0)
 	{
@@ -74,7 +74,7 @@ int _tmcd(info_t *dl_info)
 	else
 	{
 		_setenv(dl_info, "OLDPWD", _getenv(dl_info, "PWD="));
-		_setenv(dl_info, "PWD", getcwd(buffer, 1024));
+		_setenv(dl_info, "PWD", getcwd(buf_fer, 1024));
 	}
 	return (0);
 }
