@@ -12,22 +12,22 @@ int tmsh(info_t *dl_info, char **avct)
 	ssize_t k = 0;
 	int btin_ret = 0;
 
-	while (k != -1 && builtin_ret != -2)
+	while (k != -1 && btin_ret != -2)
 	{
 		discard_info(dl_info);
 		if (interactive(dl_info))
-			_puts("$ ");
-		_eputchar(BUF_FLUSH);
+			_putts("$ ");
+		_eputstrgchar(BUF_FLUSH);
 		K = get_inpts(dl_info);
 		if (K != -1)
 		{
-			set_info(dl_info, avct);
+			ini_info(dl_info, avct);
 			btin_ret = find_builtin(dl_info);
 			if (btin_ret == -1)
 				fnd_cmd(dl_info);
 		}
 		else if (interactive(dl_info))
-			_putchar('\n');
+			_sendchar('\n');
 		free_dlinfo(dl_info, 0);
 	}
 	wrt_history(dl_info);
@@ -67,8 +67,8 @@ int btin_fnd(info_t *dl_info)
 		{NULL, NULL}
 	};
 
-	for (x = 0; builtintbl[i].type; x++)
-		if (_strcmp(dl_info->argv[0], builtintbl[i].type) == 0)
+	for (x = 0; builtintbl[x].type; x++)
+		if (_strcmp(dl_info->argv[0], builtintbl[x].type) == 0)
 		{
 			dl_info->line_count++;
 			btin_ret = builtintbl[x].func(dl_info);
@@ -95,7 +95,7 @@ void fnd_cmd(info_t *dl_info)
 		dl_info->linecount_flag = 0;
 	}
 	for (x = 0, k = 0; dl_info->arg[x]; x++)
-		if (!is_delim(dl_info->arg[x], " \t\n"))
+		if (!is_delimt(dl_info->arg[x], " \t\n"))
 			k++;
 	if (!k)
 		return;
@@ -109,12 +109,12 @@ void fnd_cmd(info_t *dl_info)
 	else
 	{
 		if ((interactive(dl_info) || _getenv(dl_info, "PATH=")
-			|| dl_info->argv[0][0] == '/') && is_cmd(dl_info, dl_info->argv[0]))
+			|| dl_info->argv[0][0] == '/') && dtm_if_cmd(dl_info, dl_info->argv[0]))
 			frk_cmd(dl_info);
 		else if (*(dl_info->arg) != '\n')
 		{
 			dl_info->status = 127;
-			print_error(dl_info, "not found\n");
+			generate_error(dl_info, "not found\n");
 		}
 	}
 }
@@ -154,7 +154,7 @@ void frk_cmd(info_t *dl_info)
 		{
 			dl_info->status = WEXITSTATUS(dl_info->status);
 			if (dl_info->status == 126)
-				print_error(dl_info, "Permission denied\n");
+				generate_error(dl_info, "Permission denied\n");
 		}
 	}
 }
