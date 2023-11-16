@@ -24,14 +24,14 @@ void ini_info(info_t *dl_info, char **avec)
 	dl_info->fname = avec[0];
 	if (dl_info->arg)
 	{
-		dl_info->argv = strtow(dl_info->arg, " \t");
+		dl_info->argv = strngtow(dl_info->arg, " \t");
 		if (!dl_info->argv)
 		{
 
 			dl_info->argv = malloc(sizeof(char *) * 2);
 			if (dl_info->argv)
 			{
-				dl_info->argv[0] = _strdup(dl_info->arg);
+				dl_info->argv[0] = _strngdup(dl_info->arg);
 				dl_info->argv[1] = NULL;
 			}
 		}
@@ -59,16 +59,16 @@ void free_dlinfo(info_t *dl_info, int all)
 		if (!dl_info->cmd_buf)
 			free(dl_info->arg);
 		if (dl_info->env)
-			free_list(&(dl_info->env));
+			free_lst(&(dl_info->env));
 		if (dl_info->history)
-			free_list(&(dl_info->history));
+			free_lst(&(dl_info->history));
 		if (dl_info->alias)
-			free_list(&(info->alias));
+			free_lst(&(dl_info->alias));
 		ffree(dl_info->enviromt);
 			dl_info->enviromt = NULL;
 		bfree((void **)dl_info->cmd_buf);
-		if (dl_info->readdf > 2)
-			close(dl_info->readdf);
-		_putchar(BUF_FLUSH);
+		if (dl_info->readfd > 2)
+			close(dl_info->readfd);
+		_sendchar(BUF_FLUSH);
 	}
 }
