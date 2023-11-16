@@ -18,9 +18,9 @@ char *history_get_file(info_t *dl_info)
 	if (!buff)
 		return (NULL);
 	buff[0] = 0;
-	_strngcpy(buff, dirt);
-	_strngcat(buff, "/");
-	_strngcat(buff, HIST_FILE);
+	_strgcpy(buff, dirt);
+	_strgcat(buff, "/");
+	_strgcat(buff, HIST_FILE);
 	return (buff);
 }
 
@@ -45,10 +45,10 @@ int wrt_history(info_t *dl_info)
 		return (-1);
 	for (nodes = dl_info->history; nodes; nodes = nodes->next)
 	{
-		_putsfd(nodes->str, df);
-		_putfd('\n', df);
+		_putsdf(nodes->strng, df);
+		_putdf('\n', df);
 	}
-	_putfd(BUF_FLUSH, df);
+	_putdf(BUF_FLUSH, df);
 	close(df);
 	return (1);
 }
@@ -63,7 +63,7 @@ int rd_history(info_t *dl_info)
 {
 	int x, last = 0, lncount = 0;
 	ssize_t df, rdlent, fsize = 0;
-	struct stat str;
+	struct stat strng;
 	char *buff = NULL, *filename = history_get_file(dl_info);
 
 	if (!filename)
@@ -73,8 +73,8 @@ int rd_history(info_t *dl_info)
 	free(filename);
 	if (df == -1)
 		return (0);
-	if (!fstat(df, &str))
-		fsize = str.st_size;
+	if (!fstat(df, &strng))
+		fsize = strng.st_size;
 	if (fsize < 2)
 		return (0);
 	buff = malloc(sizeof(char) * (fsize + 1));
