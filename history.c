@@ -46,9 +46,9 @@ int wrt_history(info_t *dl_info)
 	for (nodes = dl_info->history; nodes; nodes = nodes->next)
 	{
 		_putsdf(nodes->strng, df);
-		_putdf('\n', df);
+		_eputdf('\n', df);
 	}
-	_putdf(BUF_FLUSH, df);
+	_eputdf(BUF_FLUSH, df);
 	close(df);
 	return (1);
 }
