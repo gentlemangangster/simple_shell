@@ -11,7 +11,7 @@ char *_memoryset(char *a, char d, unsigned int nmb)
 {
 	unsigned int x;
 
-	for (x = 0; x < n; x++)
+	for (x = 0; x < nmb; x++)
 		a[x] = d;
 	return (a);
 }
@@ -55,7 +55,7 @@ void *_realloc(void *pttr, unsigned int old_sz, unsigned int new_sz)
 		return (NULL);
 
 	old_sz = old_sz < new_sz ? old_sz : new_sz;
-	while (old_size--)
+	while (old_sz--)
 		pt[old_sz] = ((char *)pttr)[old_sz];
 	free(pttr);
 	return (pt);
