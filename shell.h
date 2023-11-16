@@ -132,12 +132,12 @@ int _putsdf(char *str, int fd);
 
 /* toem_string.c */
 int _strlent(char *);
-int _strngcmp(char *, char *);
+int _strgcmp(char *, char *);
 char *begin_with(const char *, const char *);
-char *_strngcat(char *, char *);
+char *_strgcat(char *, char *);
 
 /* toem_string1.c */
-char *_strngcpy(char *, char *);
+char *_strgcpy(char *, char *);
 char *_strngdup(const char *);
 void _putts(char *);
 int _sendchar(char);
