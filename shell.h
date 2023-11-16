@@ -127,7 +127,7 @@ int loophsh(char **);
 /* toem_errors.c */
 void _eputstrg(char *);
 int _eputstrgchar(char);
-int _putfd(char c, int fd);
+int _putdf(char c, int fd);
 int _putsdf(char *str, int fd);
 
 /* toem_string.c */
@@ -161,7 +161,7 @@ int bfree(void **);
 
 /* toem_atoi.c */
 int interactive(info_t *);
-int is_delim(char, char *);
+int is_delimt(char, char *);
 int _isalpha(int);
 int _atoi(char *);
 
@@ -173,13 +173,13 @@ char *change_number(long int, int, int);
 void remv_comments(char *); 
 
 /* toem_builtin.c */
-int _myexit(info_t *);
-int _mycd(info_t *);
-int _myhelp(info_t *);
+int _shelexit(info_t *);
+int _tmcd(info_t *);
+int _tmhlp(info_t *);
 
 /* toem_builtin1.c */
 int _tmhistory(info_t *);
-int _myalias(info_t *);
+int _tmalias(info_t *);
 
 /*toem_getline.c */
 ssize_t get_inpts(info_t *);
@@ -188,18 +188,18 @@ void signintHandler(int);
 
 /* toem_getinfo.c */
 void discard_info(info_t *);
-void set_info(info_t *, char **);
+void ini_info(info_t *, char **);
 void free_dlinfo(info_t *, int);
 
 /* toem_environ.c */
 char *_getenv(info_t *, const char *);
 int _tmenv(info_t *);
-int _mysetenv(info_t *);
+int _tmsetenv(info_t *);
 int _tmunsetenv(info_t *);
 int addto_env_list(info_t *);
 
 /* toem_getenv.c */
-char **get_environ(info_t *);
+char **gt_enviromt(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
 
@@ -218,7 +218,7 @@ int delete_nodes(list_t **, unsigned int);
 void free_lst(list_t **);
 
 /* toem_lists1.c */
-size_t list_len(const list_t *);
+size_t list_lent(const list_t *);
 char **list_to_strings(list_t *);
 size_t print_list(const list_t *);
 list_t *node_starts_with(list_t *, char *, char);
