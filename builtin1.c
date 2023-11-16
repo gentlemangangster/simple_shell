@@ -47,11 +47,11 @@ int sett_alias(info_t *dl_info, char *strng)
 {
 	char *p;
 
-	p = _strngchr(strng, '=');
+	p = _strgchr(strng, '=');
 	if (!p)
 		return (1);
 	if (!*++p)
-		return (unsett_alias(l_info, strng));
+		return (unsett_alias(dl_info, strng));
 
 	unsett_alias(dl_info, strng);
 	return (add_end_node(&(dl_info->alias), strng, 0) == NULL);
@@ -69,10 +69,10 @@ int print_alias(list_t *nodes)
 
 	if (nodes)
 	{
-		p = _strngchr(nodes->strng, '=');
+		p = _strgchr(nodes->strng, '=');
 		for (a = nodes->strng; a <= p; a++)
-			sendchar(*a);
-		sendchar('\'');
+			_sendchar(*a);
+		_sendchar('\'');
 		_putts(p + 1);
 		_putts("'\n");
 		return (0);
