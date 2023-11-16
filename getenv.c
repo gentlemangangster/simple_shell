@@ -8,13 +8,13 @@
  */
 char **gt_enviromt(info_t *dl_info)
 {
-	if (!dl_info->enviromt || dl_info->env_changed)
+	if (!dl_info->environ || dl_info->env_changed)
 	{
-		dl_info->enviromt = lst_to_strngs(dl_info->env);
+		dl_info->environ = lst_to_strngs(dl_info->env);
 		dl_info->env_changed = 0;
 	}
 
-	return (dl_info->enviromt);
+	return (dl_info->environ);
 }
 
 /**
