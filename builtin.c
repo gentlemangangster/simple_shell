@@ -22,7 +22,7 @@ int _shelexit(info_t *dl_info)
 			_eputstrgchar('\n');
 			return (1);
 		}
-		dl_info->err_num = _eratoi(dl_info->argv[1]);
+		dl_info->err_num = _erratoi(dl_info->argv[1]);
 		return (-2);
 	}
 	dl_info->err_num = -1;
@@ -40,7 +40,7 @@ int _tmcd(info_t *dl_info)
 	char *d, *dirt, buf_fer[1024];
 	int chdirt_rt;
 
-	s = getcwd(buf_fer, 1024);
+	d = getcwd(buf_fer, 1024);
 	if (!d)
 		_putts("TODO: >>getcwd failure emsg here<<\n");
 	if (!dl_info->argv[1])
