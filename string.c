@@ -19,13 +19,13 @@ int _strlent(char *m)
 }
 
 /**
- * _strngcmp - performs lexicogarphic comparison of two strangs.
+ * _strgcmp - performs lexicogarphic comparison of two strangs.
  * @m1: the argument first strang
  * @m2: the argument second strang
  *
  * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
  */
-int _strngcmp(char *m1, char *m2)
+int _strgcmp(char *m1, char *m2)
 {
 	while (*m1 && *m2)
 	{
@@ -56,13 +56,13 @@ char *begin_with(const char *haystck, const char *nidle)
 }
 
 /**
- * _strngcat - funtion concatenates two strings
+ * _strgcat - funtion concatenates two strings
  * @dst: the argument destination buffer
  * @src: the argument source buffer
  *
  * Return: pointer to destination buffer
  */
-char *_strngcat(char *dst, char *src)
+char *_strgcat(char *dst, char *src)
 {
 	char *rt = dst;
 
