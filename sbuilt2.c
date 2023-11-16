@@ -25,7 +25,7 @@ int conv_alias(info_t *dl_info, char *strng)
 	char *k, d;
 	int rt;
 
-	k = _strgchr(strng, '=');
+	k = _strngchr(strng, '=');
 	if (!k)
 		return (1);
 	d = *k;
@@ -47,7 +47,7 @@ int sett_alias(info_t *dl_info, char *strng)
 {
 	char *k;
 
-	k = _strgchr(strng, '=');
+	k = _strngchr(strng, '=');
 	if (!k)
 		return (1);
 	if (!*++k)
@@ -69,7 +69,7 @@ int generate_alias(list_t *nodes)
 
 	if (nodes)
 	{
-		k = _strgchr(nodes->strng, '=');
+		k = _strngchr(nodes->strng, '=');
 		for (y = nodes->strng; y <= k; y++)
 			_sendchar(*y);
 		_sendchar('\'');
@@ -104,7 +104,7 @@ int _tmalias(info_t *dl_info)
 	}
 	for (x = 1; dl_info->argv[x]; x++)
 	{
-		k = _strgchr(dl_info->argv[x], '=');
+		k = _strngchr(dl_info->argv[x], '=');
 		if (k)
 			sett_alias(dl_info, dl_info->argv[x]);
 		else
