@@ -55,12 +55,12 @@ void generate_error(info_t *dl_info, char *estrng)
  */
 int generate_d(int inpt, int df)
 {
-	int (*__putchar)(char) = _putchar;
+	int (*__putchar)(char) = _sendchar;
 	int i, cnt = 0;
 	unsigned int _abs_, curnt;
 
 	if (df == STDERR_FILENO)
-		__putchar = _eputchar;
+		__putchar = _eputstrgchar;
 	if (inpt < 0)
 	{
 		_abs_ = -inpt;
