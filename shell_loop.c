@@ -138,7 +138,7 @@ void frk_cmd(info_t *dl_info)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(dl_info->path, dl_info->argv, get_environ(dl_info)) == -1)
+		if (execve(dl_info->path, dl_info->argv, gt_enviromt(dl_info)) == -1)
 		{
 			free_dlinfo(dl_info, 1);
 			if (errno == EACCES)
