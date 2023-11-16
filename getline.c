@@ -22,7 +22,7 @@ ssize_t input_buff(info_t *dl_info, char **buff, size_t *lent)
 #if USE_GETLINE
 		t = getline(buff, &lent_pt, stdin);
 #else
-		t = _get_line(dl_info, buff, &lent_pt);
+		t = _getline(dl_info, buff, &lent_pt);
 #endif
 		if (t > 0)
 		{
@@ -110,14 +110,14 @@ ssize_t read_buff(info_t *dl_info, char *buff, size_t *x)
 }
 
 /**
- * _get_line - gets the next line of input from STDIN
+ * _getline - gets the next line of input from STDIN
  * @dl_info: parameter struct
  * @pttr: address of pointer to buffer, preallocated or NULL
  * @lenth: size of preallocated ptr buffer if not NULL
  *
  * Return: m
  */
-int _get_line(info_t *dl_info, char **pttr, size_t *lenth)
+int _getline(info_t *dl_info, char **pttr, size_t *lenth)
 {
 	static char buff[READ_BUF_SIZE];
 	static size_t x, lent;
@@ -135,7 +135,7 @@ int _get_line(info_t *dl_info, char **pttr, size_t *lenth)
 	if (t == -1 || (t == 0 && lent == 0))
 		return (-1);
 
-	g = _strgchr(buff + x, '\n');
+	g = _strngchr(buff + x, '\n');
 	z = g ? 1 + (unsigned int)(g - buff) : lent;
 	new_pt = _realloc(pt, m, m ? m + z : z + 1);
 	if (!new_pt) /* MALLOC FAILURE! */
