@@ -8,13 +8,13 @@
  */
 char **gt_enviromt(info_t *dl_info)
 {
-	if (!dl_info->environ || dl_info->env_changed)
+	if (!dl_info->enviromt || dl_info->env_changed)
 	{
-		dl_info->environ = list_to_strings(dl_info->env);
+		dl_info->enviromt = lst_to_strings(dl_info->env);
 		dl_info->env_changed = 0;
 	}
 
-	return (dl_info->environ);
+	return (dl_info->enviromt);
 }
 
 /**
@@ -38,13 +38,13 @@ int _unsetenv(info_t *dl_info, char *varb)
 		pttr = begin_with(nodes->strng, varb);
 		if (pttr && *pttr == '=')
 		{
-			dl_info->env_changed = delete_node(&(dl_info->env), x);
+			dl_info->env_changed = delete_nodes(&(dl_info->env), x);
 			x = 0;
 			nodes = dl_info->env;
 			continue;
 		}
 		nodes = nodes->next;
-		X++;
+		x++;
 	}
 	return (dl_info->env_changed);
 }
@@ -70,9 +70,9 @@ int _setenvmt(info_t *dl_info, char *varb, char *value)
 	buff = malloc(_strlent(varb) + _strlent(value) + 2);
 	if (!buff)
 		return (1);
-	_strngcpy(buff, varb);
-	_strngcat(buff, "=");
-	_strngcat(buff, value);
+	_strgcpy(buff, varb);
+	_strgcat(buff, "=");
+	_strgcat(buff, value);
 	nodes = dl_info->env;
 	while (nodes)
 	{
