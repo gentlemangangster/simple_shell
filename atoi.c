@@ -50,9 +50,9 @@ int _atoi(char *e)
 	int k, sign_t = 1, flags = 0, outpt;
 	unsigned int otptrest = 0;
 
-	for (k = 0; e[k] != '\0' && flag != 2; k++)
+	for (k = 0; e[k] != '\0' && flags != 2; k++)
 	{
-		if (e[i] == '-')
+		if (e[k] == '-')
 			sign_t *= -1;
 
 		if (e[k] >= '0' && e[k] <= '9')
@@ -66,9 +66,9 @@ int _atoi(char *e)
 	}
 
 	if (sign_t == -1)
-		outpt = -otoprest;
+		outpt = -otptrest;
 	else
-		outpt = otoprest;
+		outpt = otptrest;
 
 	return (outpt);
 }
