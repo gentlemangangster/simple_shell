@@ -22,7 +22,7 @@ int _shelexit(info_t *dl_info)
 			_eputstrgchar('\n');
 			return (1);
 		}
-		dl_info->err_num = _erratoi(dl_info->argv[1]);
+		dl_info->err_num = _eratoi(dl_info->argv[1]);
 		return (-2);
 	}
 	dl_info->err_num = -1;
