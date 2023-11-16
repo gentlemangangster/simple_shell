@@ -56,19 +56,19 @@ int btin_fnd(info_t *dl_info)
 {
 	int x, btin_ret = -1;
 	builtin_table builtintbl[] = {
-		{"exit", _myexit},
+		{"exit", _shelexit},
 		{"env", _tmenv},
-		{"help", _myhelp},
+		{"help", _tmhlp},
 		{"history", _tmhistory},
-		{"setenv", _mysetenv},
+		{"setenv", _tmsetenv},
 		{"unsetenv", _tmunsetenv},
-		{"cd", _mycd},
-		{"alias", _myalias},
+		{"cd", _tmcd},
+		{"alias", _tmalias},
 		{NULL, NULL}
 	};
 
 	for (x = 0; builtintbl[x].type; x++)
-		if (_strcmp(dl_info->argv[0], builtintbl[x].type) == 0)
+		if (_strgcmp(dl_info->argv[0], builtintbl[x].type) == 0)
 		{
 			dl_info->line_count++;
 			btin_ret = builtintbl[x].func(dl_info);
