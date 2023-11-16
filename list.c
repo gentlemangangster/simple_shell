@@ -56,7 +56,7 @@ list_t *add_end_node(list_t **hd, const char *strng, int num)
 	nw_node->num = num;
 	if (strng)
 	{
-		nw_node->strng = _strdup(strng);
+		nw_node->strng = _strngdup(strng);
 		if (!nw_node->strng)
 		{
 			free(nw_node);
