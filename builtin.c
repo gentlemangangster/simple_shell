@@ -52,7 +52,7 @@ int _tmcd(info_t *dl_info)
 		else
 			chdirt_rt = chdir(dirt);
 	}
-	else if (_strngcmp(dl_info->argv[1], "-") == 0)
+	else if (_strgcmp(dl_info->argv[1], "-") == 0)
 	{
 		if (!_getenv(dl_info, "OLDPWD="))
 		{
