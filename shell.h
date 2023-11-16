@@ -113,7 +113,7 @@ typedef struct builtin
 
 /* toem_shloop.c */
 int tmsh(info_t *, char **);
-int builtin_fnd(info_t *);
+int btin_fnd(info_t *);
 void fnd_cmd(info_t *);
 void frk_cmd(info_t *);
 
@@ -219,10 +219,10 @@ int delete_nodes(list_t **, unsigned int);
 void free_lst(list_t **);
 
 /* toem_lists1.c */
-size_t list_lent(const list_t *);
-char **list_to_strings(list_t *);
-size_t print_list(const list_t *);
-list_t *node_starts_with(list_t *, char *, char);
+size_t lst_lent(const list_t *);
+char **lst_to_strings(list_t *);
+size_t print_lst(const list_t *);
+list_t *strt_node_with(list_t *, char *, char);
 ssize_t get_node_edex(list_t *, list_t *);
 
 /* toem_vars.c */
