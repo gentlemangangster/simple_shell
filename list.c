@@ -17,11 +17,11 @@ list_t *new_node(list_t **hd, const char *strng, int num)
 	nw_head = malloc(sizeof(list_t));
 	if (!nw_head)
 		return (NULL);
-	_memset((void *)nw_head, 0, sizeof(list_t));
+	_memoryset((void *)nw_head, 0, sizeof(list_t));
 	nw_head->num = num;
 	if (strng)
 	{
-		nw_head->strng = _strdup(strng);
+		nw_head->strng = _strngdup(strng);
 		if (!nw_head->strng)
 		{
 			free(nw_head);
@@ -52,7 +52,7 @@ list_t *add_end_node(list_t **hd, const char *strng, int num)
 	nw_node = malloc(sizeof(list_t));
 	if (!nw_node)
 		return (NULL);
-	_memset((void *)nw_node, 0, sizeof(list_t));
+	_memoryset((void *)nw_node, 0, sizeof(list_t));
 	nw_node->num = num;
 	if (strng)
 	{
@@ -87,8 +87,8 @@ size_t strng_list_print(const list_t *y)
 
 	while (y)
 	{
-		_puts(y->strng ? y->strng : "(nil)");
-		_puts("\n");
+		_putts(y->strng ? y->strng : "(nil)");
+		_putts("\n");
 		y = y->next;
 		x++;
 	}
