@@ -103,7 +103,7 @@ ssize_t read_buff(info_t *dl_info, char *buff, size_t *x)
 
 	if (*x)
 		return (0);
-	t = read(dl_info->readdf, buff, READ_BUF_SIZE);
+	t = read(dl_info->readfd, buff, READ_BUF_SIZE);
 	if (t >= 0)
 		*x = t;
 	return (t);
@@ -135,13 +135,13 @@ int _get_line(info_t *dl_info, char **pttr, size_t *lenth)
 	if (t == -1 || (t == 0 && lent == 0))
 		return (-1);
 
-	g = _strngchr(buff + x, '\n');
+	g = _strgchr(buff + x, '\n');
 	z = g ? 1 + (unsigned int)(g - buff) : lent;
 	new_pt = _realloc(pt, m, m ? m + z : z + 1);
 	if (!new_pt) /* MALLOC FAILURE! */
 		return (pt ? free(pt), -1 : -1);
 
-	if (s)
+	if (m)
 		_strngcat(new_pt, buff + x, z - x);
 	else
 		_strngcpy(new_pt, buff + x, z - x + 1);
