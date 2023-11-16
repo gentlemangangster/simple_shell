@@ -25,36 +25,36 @@ int conv_alias(info_t *dl_info, char *strng)
 	char *k, d;
 	int rt;
 
-	k = _strchr(strng, '=');
+	k = _strgchr(strng, '=');
 	if (!k)
 		return (1);
 	d = *k;
 	*k = 0;
-	rt = delete_node_at_index(&(dl_info->alias),
-		get_node_index(dl_info->alias, node_starts_with(dl_info->alias, strng, -1)));
+	rt = delete_node(&(dl_info->alias),
+		get_node_edex(dl_info->alias, node_starts_with(dl_info->alias, strng, -1)));
 	*k = d;
 	return (rt);
 }
 
 /**
- * set_alias - sets alias to string
+ * sett_alias - sets alias to string
  * @dl_info: parameter struct
  * @strng: the string alias
  *
  * Return: Always 0 on success, 1 on error
  */
-int set_alias(info_t *dl_info, char *strng)
+int sett_alias(info_t *dl_info, char *strng)
 {
 	char *k;
 
-	k = _strchr(str, '=');
+	k = _strgchr(strng, '=');
 	if (!k)
 		return (1);
 	if (!*++k)
-		return (unset_alias(dl_info, strng));
+		return (unsett_alias(dl_info, strng));
 
-	unset_alias(dl_info, strng);
-	return (add_node_end(&(dl_info->alias), strng, 0) == NULL);
+	unsett_alias(dl_info, strng);
+	return (new_node(&(dl_info->alias), strng, 0) == NULL);
 }
 
 /**
@@ -69,12 +69,12 @@ int generate_alias(list_t *nodes)
 
 	if (nodes)
 	{
-		k = _strchr(nodes->strng, '=');
+		k = _strgchr(nodes->strng, '=');
 		for (y = nodes->strng; y <= k; y++)
-			_putchar(*y);
-		_putchar('\'');
-		_puts(k + 1);
-		_puts("'\n");
+			_sendchar(*y);
+		_sendchar('\'');
+		_putts(k + 1);
+		_putts("'\n");
 		return (0);
 	}
 	return (1);
@@ -88,7 +88,7 @@ int generate_alias(list_t *nodes)
  */
 int _tmalias(info_t *dl_info)
 {
-	int i = 0;
+	int x = 0;
 	char *k = NULL;
 	list_t *nodes = NULL;
 
@@ -102,13 +102,13 @@ int _tmalias(info_t *dl_info)
 		}
 		return (0);
 	}
-	for (i = 1; dl_info->argv[i]; i++)
+	for (x = 1; dl_info->argv[x]; x++)
 	{
-		k = _strchr(dl_info->argv[i], '=');
+		k = _strgchr(dl_info->argv[x], '=');
 		if (k)
-			set_alias(dl_info, dl_info->argv[i]);
+			sett_alias(dl_info, dl_info->argv[x]);
 		else
-			generate_alias(node_starts_with(dl_info->alias, dl_info->argv[i], '='));
+			generate_alias(node_starts_with(dl_info->alias, dl_info->argv[x], '='));
 	}
 
 	return (0);
