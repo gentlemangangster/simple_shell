@@ -13,7 +13,7 @@ int _shelexit(info_t *dl_info)
 
 	if (dl_info->argv[1]) /* If there is an exit arguement */
 	{
-		shexitcheck = _erratoi(dl_info->argv[1]);
+		shexitcheck = _eratoi(dl_info->argv[1]);
 		if (shexitcheck == -1)
 		{
 			dl_info->status = 2;
@@ -73,8 +73,8 @@ int _tmcd(info_t *dl_info)
 	}
 	else
 	{
-		_setenv(dl_info, "OLDPWD", _getenv(dl_info, "PWD="));
-		_setenv(dl_info, "PWD", getcwd(buf_fer, 1024));
+		_setenvmt(dl_info, "OLDPWD", _getenv(dl_info, "PWD="));
+		_setenvmt(dl_info, "PWD", getcwd(buf_fer, 1024));
 	}
 	return (0);
 }
