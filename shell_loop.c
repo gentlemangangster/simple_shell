@@ -100,7 +100,7 @@ void fnd_cmd(info_t *dl_info)
 	if (!k)
 		return;
 
-	path = find_path(dl_info, _getenv(dl_info, "PATH="), dl_info->argv[0]);
+	path = find_the_path(dl_info, _getenv(dl_info, "PATH="), dl_info->argv[0]);
 	if (path)
 	{
 		dl_info->path = path;
