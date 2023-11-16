@@ -114,7 +114,7 @@ int re_place_vars(info_t *dl_info)
 		if (dl_info->argv[x][0] != '$' || !dl_info->argv[x][1])
 			continue;
 
-		if (!_strngcmp(dl_info->argv[x], "$?"))
+		if (!_strgcmp(dl_info->argv[x], "$?"))
 		{
 			re_place_string(&(dl_info->argv[x]),
 				_strngdup(change_number(dl_info->status, 10, 0)));
@@ -126,8 +126,8 @@ int re_place_vars(info_t *dl_info)
 				_strngdup(change_number(getpid(), 10, 0)));
 			continue;
 		}
-		node = node_starts_with(dl_info->env, &dl_info->argv[x][1], '=');
-		if (node)
+		nodes = node_starts_with(dl_info->env, &dl_info->argv[x][1], '=');
+		if (nodes)
 		{
 			re_place_string(&(dl_info->argv[x]),
 				_strngdup(_strngchr(node->strng, '=') + 1));
