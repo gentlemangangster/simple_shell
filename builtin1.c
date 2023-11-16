@@ -9,7 +9,7 @@
  */
 int _tmhistory(info_t *dl_info)
 {
-	print_list(dl_info->history);
+	print_lst(dl_info->history);
 	return (0);
 }
 
@@ -31,7 +31,7 @@ int unsett_alias(info_t *dl_info, char *strng)
 	c = *p;
 	*p = 0;
 	ret = delete_nodes(&(dl_info->alias),
-		get_node_edex(dl_info->alias, node_starts_with(dl_info->alias, strng, -1)));
+		get_node_edex(dl_info->alias, strt_node_with(dl_info->alias, strng, -1)));
 	*p = c;
 	return (ret);
 }
@@ -47,7 +47,7 @@ int sett_alias(info_t *dl_info, char *strng)
 {
 	char *p;
 
-	p = _strgchr(strng, '=');
+	p = _strngchr(strng, '=');
 	if (!p)
 		return (1);
 	if (!*++p)
@@ -69,7 +69,7 @@ int print_alias(list_t *nodes)
 
 	if (nodes)
 	{
-		p = _strgchr(nodes->strng, '=');
+		p = _strngchr(nodes->strng, '=');
 		for (a = nodes->strng; a <= p; a++)
 			_sendchar(*a);
 		_sendchar('\'');
@@ -108,7 +108,7 @@ int _tmalias(info_t *dl_info)
 		if (p)
 			sett_alias(dl_info, dl_info->argv[x]);
 		else
-			print_alias(node_starts_with(dl_info->alias, dl_info->argv[x], '='));
+			print_alias(strt_node_with(dl_info->alias, dl_info->argv[x], '='));
 	}
 
 	return (0);
