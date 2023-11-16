@@ -10,7 +10,7 @@ char **gt_enviromt(info_t *dl_info)
 {
 	if (!dl_info->enviromt || dl_info->env_changed)
 	{
-		dl_info->enviromt = lst_to_strings(dl_info->env);
+		dl_info->enviromt = lst_to_strngs(dl_info->env);
 		dl_info->env_changed = 0;
 	}
 
