@@ -64,8 +64,8 @@ void free_dlinfo(info_t *dl_info, int all)
 			free_lst(&(dl_info->history));
 		if (dl_info->alias)
 			free_lst(&(dl_info->alias));
-		ffree(dl_info->enviromt);
-			dl_info->enviromt = NULL;
+		ffree(dl_info->environ);
+			dl_info->environ = NULL;
 		bfree((void **)dl_info->cmd_buf);
 		if (dl_info->readfd > 2)
 			close(dl_info->readfd);
