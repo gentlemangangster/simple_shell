@@ -85,8 +85,8 @@ int addto_env_list(info_t *dl_info)
 	list_t *nodes = NULL;
 	size_t x;
 
-	for (x = 0; enviromt[x]; x++)
-		add_end_node(&nodes, enviromt[x], 0);
+	for (x = 0; environ[x]; x++)
+		add_end_node(&nodes, environ[x], 0);
 	dl_info->env = nodes;
 	return (0);
 }
