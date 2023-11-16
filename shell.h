@@ -220,7 +220,7 @@ void free_lst(list_t **);
 
 /* toem_lists1.c */
 size_t lst_lent(const list_t *);
-char **lst_to_strings(list_t *);
+char **lst_to_strngs(list_t *);
 size_t print_lst(const list_t *);
 list_t *strt_node_with(list_t *, char *, char);
 ssize_t get_node_edex(list_t *, list_t *);
