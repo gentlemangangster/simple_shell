@@ -34,7 +34,7 @@
 #define HIST_FILE	".simple_shell_history"
 #define HIST_MAX	4097
 
-extern char **enviromt;
+extern char **environ;
 
 
 /**
@@ -62,7 +62,7 @@ typedef struct liststr
  *@linecount_flag: if on count this line of input
  *@fname: the program filename
  *@env: linked list local copy of environ
- *@enviromt: custom modified copy of environ from LL env
+ *@environ: custom modified copy of environ from LL env
  *@history: the history node
  *@alias: the alias node
  *@env_changed: on if environ was changed
@@ -85,7 +85,7 @@ typedef struct passinfo
 	list_t *env;
 	list_t *history;
 	list_t *alias;
-	char **enviromt;
+	char **environ;
 	int env_changed;
 	int status;
 
