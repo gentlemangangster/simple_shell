@@ -14,7 +14,7 @@ char *history_get_file(info_t *dl_info)
 	dirt = _getenv(dl_info, "HOME=");
 	if (!dirt)
 		return (NULL);
-	buff = malloc(sizeof(char) * (_strlen(dirt) + _strlen(HIST_FILE) + 2));
+	buff = malloc(sizeof(char) * (_strlent(dirt) + _strlent(HIST_FILE) + 2));
 	if (!buff)
 		return (NULL);
 	buff[0] = 0;
@@ -97,26 +97,26 @@ int rd_history(info_t *dl_info)
 	free(buff);
 	dl_info->histcount = lncount;
 	while (dl_info->histcount-- >= HIST_MAX)
-		delete_node_at_index(&(dl_info->history), 0);
+		delete_nodes(&(dl_info->history), 0);
 	renumber_history(dl_info);
 	return (dl_info->histcount);
 }
 
 /**
- * build_history_list - adds entry to a history linked list
+ * build_list_history - adds entry to a history linked list
  * @dl_info: Structure containing potential arguments. Used to maintain
  * @buff: buffer
  * @lncount: the history linecount, histcount
  *
  * Return: Always 0
  */
-int build_history_list(info_t *dl_info, char *buff, int lncount)
+int build_list_history(info_t *dl_info, char *buff, int lncount)
 {
 	list_t *nodes = NULL;
 
 	if (dl_info->history)
 		nodes = dl_info->history;
-	add_node_end(&nodes, buff, lncount);
+	add_end_node(&nodes, buff, lncount);
 
 	if (!dl_info->history)
 		dl_info->history = nodes;

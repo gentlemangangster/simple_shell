@@ -33,7 +33,7 @@ ssize_t input_buff(info_t *dl_info, char **buff, size_t *lent)
 			}
 			dl_info->linecount_flag = 1;
 			remv_comments(*buff);
-			build_history_list(dl_info, *buff, dl_info->histcount++);
+			build_list_history(dl_info, *buff, dl_info->histcount++);
 			/* if (_strngchr(*buff, ';')) is command chain? */
 			{
 				*lent = t;
@@ -57,7 +57,7 @@ ssize_t get_inpts(info_t *dl_info)
 	ssize_t t = 0;
 	char **buff_p = &(dl_info->arg), *pttr;
 
-	_putchar(BUF_FLUSH);
+	_sendchar(BUF_FLUSH);
 	t = input_buff(dl_info, &buff, &lent);
 	if (t == -1) /* EOF */
 		return (-1);
@@ -66,10 +66,10 @@ ssize_t get_inpts(info_t *dl_info)
 		m = x; /* init new iterator to current buff position */
 		pttr = buff + x; /* get pointer for return */
 
-		check_chain(dl_info, buff, &m, x, lent);
+		chck_chain(dl_info, buff, &m, x, lent);
 		while (m < lent) /* iterate to semicolon or end */
 		{
-			if (is_chain(dl_info, buff, &m))
+			if (te_chain(dl_info, buff, &m))
 				break;
 			m++;
 		}
@@ -82,7 +82,7 @@ ssize_t get_inpts(info_t *dl_info)
 		}
 
 		*buff_p = pttr; /* pass back pointer to current command position */
-		return (_strlen(pttr)); /* return length of current command */
+		return (_strlent(pttr)); /* return length of current command */
 	}
 
 	*buff_p = buff; /* else prevent a chain, pass back buffer from _getline() */
@@ -142,9 +142,9 @@ int _get_line(info_t *dl_info, char **pttr, size_t *lenth)
 		return (pt ? free(pt), -1 : -1);
 
 	if (s)
-		_strncat(new_pt, buff + x, z - x);
+		_strngcat(new_pt, buff + x, z - x);
 	else
-		_strncpy(new_pt, buff + x, z - x + 1);
+		_strngcpy(new_pt, buff + x, z - x + 1);
 
 	m += z - x;
 	x = z;
@@ -152,7 +152,7 @@ int _get_line(info_t *dl_info, char **pttr, size_t *lenth)
 
 	if (lenth)
 		*lenth = m;
-	*ptr = pt;
+	*pttr = pt;
 	return (m);
 }
 
@@ -164,7 +164,7 @@ int _get_line(info_t *dl_info, char **pttr, size_t *lenth)
  */
 void signintHandler(__attribute__((unused))int sign_num)
 {
-	_puts("\n");
-	_puts("$ ");
-	_putchar(BUF_FLUSH);
+	_putts("\n");
+	_putts("$ ");
+	_sendchar(BUF_FLUSH);
 }
