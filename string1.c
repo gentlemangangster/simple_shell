@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * _strngcpy - function that copies a string
+ * _strgcpy - function that copies a string
  * @dst: the argument destination
  * @src: the argument source
  *
  * Return: pointer to destination
  */
-char *_strngcpy(char *dst, char *src)
+char *_strgcpy(char *dst, char *src)
 {
 	int x = 0;
 
@@ -59,7 +59,7 @@ void _putts(char *strng)
 		return;
 	while (strng[x] != '\0')
 	{
-		_putchar(strng[x]);
+		_sendchar(strng[x]);
 		x++;
 	}
 }
