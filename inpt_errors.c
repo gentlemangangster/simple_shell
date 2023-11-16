@@ -79,7 +79,7 @@ int _putsdf(char *strng, int df)
 		return (0);
 	while (*strng)
 	{
-		i += _putdf(*strng++, df);
+		i += _eputdf(*strng++, df);
 	}
 	return (i);
 }
