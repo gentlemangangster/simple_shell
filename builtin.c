@@ -22,7 +22,7 @@ int _shelexit(info_t *dl_info)
 			_eputstrgchar('\n');
 			return (1);
 		}
-		dl_info->err_num = _erratoi(dl_info->argv[1]);
+		dl_info->err_num = _eratoi(dl_info->argv[1]);
 		return (-2);
 	}
 	dl_info->err_num = -1;
@@ -50,7 +50,7 @@ int _tmcd(info_t *dl_info)
 			chdirt_rt = /* TODO: what should this be? */
 				chdir((dirt = _getenv(dl_info, "PWD=")) ? dirt : "/");
 		else
-			chdirt_ret = chdir(dirt);
+			chdirt_rt = chdir(dirt);
 	}
 	else if (_strngcmp(dl_info->argv[1], "-") == 0)
 	{
@@ -61,12 +61,12 @@ int _tmcd(info_t *dl_info)
 			return (1);
 		}
 		_putts(_getenv(dl_info, "OLDPWD=")), _sendchar('\n');
-		chdir_rt = /* TODO: what should this be? */
-			chdir((dir = _getenv(dl_info, "OLDPWD=")) ? dirt : "/");
+		chdirt_rt = /* TODO: what should this be? */
+			chdir((dirt = _getenv(dl_info, "OLDPWD=")) ? dirt : "/");
 	}
 	else
-		chdir_rt = chdir(dl_info->argv[1]);
-	if (chdir_rt == -1)
+		chdirt_rt = chdir(dl_info->argv[1]);
+	if (chdirt_rt == -1)
 	{
 		generate_error(dl_info, "can't cd to ");
 		_eputstrg(dl_info->argv[1]), _eputstrgchar('\n');
