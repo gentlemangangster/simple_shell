@@ -18,11 +18,11 @@ int tmsh(info_t *dl_info, char **avct)
 		if (interactive(dl_info))
 			_putts("$ ");
 		_eputstrgchar(BUF_FLUSH);
-		K = get_inpts(dl_info);
-		if (K != -1)
+		k = get_inpts(dl_info);
+		if (k != -1)
 		{
 			ini_info(dl_info, avct);
-			btin_ret = find_builtin(dl_info);
+			btin_ret = btin_fnd(dl_info);
 			if (btin_ret == -1)
 				fnd_cmd(dl_info);
 		}
