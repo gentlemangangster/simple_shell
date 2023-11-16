@@ -38,7 +38,7 @@ char **lst_to_strngs(list_t *hd)
 		return (NULL);
 	for (x = 0; nodes; nodes = nodes->next, x++)
 	{
-		strng = malloc(_strlen(node->strng) + 1);
+		strng = malloc(_strlent(node->strng) + 1);
 		if (!strng)
 		{
 			for (f = 0; f < x; f++)
@@ -47,7 +47,7 @@ char **lst_to_strngs(list_t *hd)
 			return (NULL);
 		}
 
-		strng = _strngcpy(strng, nodes->strng);
+		strng = _strgcpy(strng, nodes->strng);
 		strngs[x] = strng;
 	}
 	strngs[x] = NULL;
@@ -67,11 +67,11 @@ size_t print_lst(const list_t *y)
 
 	while (y)
 	{
-		_puts(change_number(y->num, 10, 0));
-		_putchar(':');
-		_putchar(' ');
-		_puts(y->strng ? y->strng : "(nil)");
-		_puts("\n");
+		_putts(change_number(y->num, 10, 0));
+		_sendchar(':');
+		_sendchar(' ');
+		_putts(y->strng ? y->strng : "(nil)");
+		_putts("\n");
 		y = y->next;
 		x++;
 	}
@@ -92,7 +92,7 @@ list_t *strt_node_with(list_t *nodes, char *prfix, char m)
 
 	while (nodes)
 	{
-		pt = starts_with(nodes->strng, prfix);
+		pt = begin_with(nodes->strng, prfix);
 		if (pt && ((m == -1) || (*pt == m)))
 			return (nodes);
 		nodes = nodes->next;
