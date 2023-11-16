@@ -18,20 +18,20 @@ char **strngtow(char *strng, char *d)
 	if (!d)
 		d = " ";
 	for (x = 0; strng[x] != '\0'; x++)
-		if (!is_delim(str[x], d) && (is_delim(strng[x + 1], d) || !str[x + 1]))
-			numwords++;
+		if (!is_delimt(strng[x], d) && (is_delimt(strng[x + 1], d) || !strng[x + 1]))
+			numbwords++;
 
-	if (numwords == 0)
+	if (numbwords == 0)
 		return (NULL);
-	s = malloc((1 + numwords) * sizeof(char *));
+	n = malloc((1 + numbwords) * sizeof(char *));
 	if (!n)
 		return (NULL);
-	for (x = 0, j = 0; j < numwords; j++)
+	for (x = 0, j = 0; j < numbwords; j++)
 	{
-		while (is_delim(strng[x], d))
+		while (is_delimt(strng[x], d))
 			x++;
 		k = 0;
-		while (!is_delim(strng[x + k], d) && strng[x + k])
+		while (!is_delimt(strng[x + k], d) && strng[x + k])
 			k++;
 		n[j] = malloc((k + 1) * sizeof(char));
 		if (!n[j])
@@ -62,7 +62,7 @@ char **strngtow2(char *strng, char d)
 
 	if (strng == NULL || strng[0] == 0)
 		return (NULL);
-	for (i = 0; strng[x] != '\0'; x++)
+	for (x = 0; strng[x] != '\0'; x++)
 		if ((strng[x] != d && strng[x + 1] == d) ||
 		    (strng[x] != d && !strng[x + 1]) || strng[x + 1] == d)
 			numbwords++;
@@ -71,7 +71,7 @@ char **strngtow2(char *strng, char d)
 	n = malloc((1 + numbwords) * sizeof(char *));
 	if (!n)
 		return (NULL);
-	for (x = 0, j = 0; j < numwords; j++)
+	for (x = 0, j = 0; j < numbwords; j++)
 	{
 		while (strng[x] == d && strng[x] != d)
 			x++;
